@@ -6,6 +6,8 @@
 
   - Each line should be `{text_a:"sencence A.", text_b:"sencence B.", label:"entailment"}` and test dataset has no label
 
+- See report at [`Report.pdf`](Report.pdf) and `latex/`
+
 ## Get Started
 
 1. Run `check_length.py` and determine the proper max_length for tokenizer

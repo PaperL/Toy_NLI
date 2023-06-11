@@ -4,7 +4,7 @@ import nlpaug.augmenter.word as naw
 import spacy
 from tqdm import tqdm
 
-DEBUG = False
+DEBUG = True
 
 nlp = spacy.load('en_core_web_sm')
 
@@ -16,7 +16,7 @@ data = []
 with open(input_file, 'r') as file:
     for line in tqdm(file):
         data.append(json.loads(line.strip()))
-        if DEBUG and len(data) > 10:
+        if DEBUG and len(data) > 20:
             break
 
 # Step 2: Extract adjectives and verbs from text_a and text_b
@@ -59,14 +59,14 @@ def augment_work(example):
                     syn_augmented2[i] = syn_augmented2[i].replace(
                         token.text, syn_augmented_word)
                     if DEBUG:
-                        print('SYN ', token.text, '<', syn_augmented_word, '>')
+                        # print('SYN ', token.text, '<', syn_augmented_word, '>')
             for ant_augmented_token in nlp(ant_augmented_word):
                 if token.tag_ == ant_augmented_token.tag_:
                     if ant_cnt % 2 == 0 and label != 'contradiction':
                         ant_augmented2[i] = ant_augmented2[i].replace(
                             token.text, ant_augmented_word)
-                    if DEBUG:
-                        print('ANT ', token.text, '<', ant_augmented_word, '>')
+                    # if DEBUG:
+                    #     print('ANT ', token.text, '<', ant_augmented_word, '>')
 
     if syn_augmented2[0] != text2[0] or syn_augmented2[1] != text2[1]:
         augmented_example = {
