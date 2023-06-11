@@ -1,0 +1,7 @@
+jsonlines==3.1.0
+matplotlib==3.7.1
+numpy==1.24.1
+py_console==0.1.6
+torch==2.0.1+cu118
+tqdm==4.65.0
+transformers==4.29.2
